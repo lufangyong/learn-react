@@ -1,25 +1,55 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import axios from '@/common/util/axios';
+import BasicLayout from '@/views/Layouts/BasicLayout';
+import Login from '@/views/Login';
+import { updateUserInfo } from './store/actions/userInfo';
 
+import './App.scss';
+
+@connect(
+  state => {
+    return { userInfo: state.userInfo };
+  },
+  { updateUserInfo }
+)
 class App extends Component {
+  componentWillMount() {
+    // this.getData();
+    const accessToken = window.localStorage.getItem('accessToken');
+    if (accessToken) {
+      this.props.updateUserInfo({
+        accessToken
+      });
+    }
+  }
+
+  getData = () => {
+    axios.get('/api/v1/blink/classic').then(res => {
+      console.log(res.data);
+    });
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          <Switch>
+            <Route exact={true} path="/login" component={Login} />
+            {localStorage.getItem('accessToken') ? (
+              ''
+            ) : (
+              <Redirect to="/login" />
+            )}
+            <BasicLayout />
+          </Switch>
+        </Router>
       </div>
     );
   }
