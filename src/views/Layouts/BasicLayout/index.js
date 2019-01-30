@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import routers from '@/router';
 import NotFound from '@/views/NotFound';
 

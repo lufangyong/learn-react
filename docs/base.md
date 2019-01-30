@@ -1,4 +1,4 @@
-# 其他配置
+# 配置
 
 ## react-router-dom(路由配置)
 - [官方文档](https://reacttraining.com/react-router/web/guides/quick-start)
@@ -7,8 +7,8 @@
 
 ## redux(状态管理)
 在 redux 中最重要的三个部分 store action reducer
-- store：
-- action：
+- store：数据存储中心
+- action：是一个对象，type（类型） payload（载荷）
 - reducer 接受一个action，同步更新store中的数据，为了方便把action封装成一个函数
 
 ## react-redux使用装饰器函数Decorator

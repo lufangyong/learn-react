@@ -28,6 +28,13 @@
 config = injectBabelPlugin( ["@babel/plugin-proposal-decorators", { "legacy": true }], config);
 ```
 
+## 初识 React Hooks
+- useState() 让你定义一个 state 变量
+- useEffect() 让你定义一个副作用，相当于使用 Class Component 的生命周期
+- useContext() 让你读取某些 context
+
+[React hooks实践](https://juejin.im/post/5c4d7122e51d4556940c15cb)
+
 ## ant-design 圣诞彩蛋
 虽然彩蛋的问题已经被修复，但是由此带来的 NPM 安全问题不得不又让我们敲响了警钟。
 对于这些覆盖面极其大的产品都会出现这样的问题，那么免不了别的产品也会出现这样的事情。这次只是加个庆祝节日的特效，下次说不定给你弹个框啥的。
